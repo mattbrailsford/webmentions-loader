@@ -23,7 +23,7 @@ import { webmentionsLoader } from "webmentions-loader";
 const webmentions = defineCollection({
   loader: webmentionsLoader({
       apiKey: WEBMENTIONSIO_API_KEY,
-      domain: DOMAIN
+      domain: WEBSITE_DOMAIN
   })
 });
 
@@ -36,9 +36,9 @@ You can then use these like any other content collection in Astro:
 import { getCollection } from "astro:content";
 import type { Webmention } from "webmentions-loader";
 
-const webmentions = getCollection("webmentions").map(wm => wm.data);
-const pageWebmentions = webmentions.filter(wm => wm.target == Astro.url.toString());
-const pageLikes = pageWebmentions.filter(wm => wm.property == 'like-of');
+const webmentions : Webmention[] = getCollection("webmentions").map(wm => wm.data);
+const pageWebmentions : Webmention[] = webmentions.filter(wm => wm.target == Astro.url.toString());
+const pageLikes : Webmention[] = pageWebmentions.filter(wm => wm.property == 'like-of');
 ---
 ...
 <div>{{ pageLikes.length }} Likes</div>
@@ -57,11 +57,11 @@ The `webmentionsLoader` function takes an options object with the following stru
 }
 ```
 
-| Property                     | Description                                                                                                                                                                |
-|------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `apiKey`                     | The [webmentions.io](https://webmentions.io) API key for your account.                                                                                                     |
-| `repo`                       | The domain of the site to fetch webmentions for (as configured in webmentions.io).                                                                                         |
-| `incremental`                | If `true`, the loader will only fetch new/updated discussions since the last build. Otherwise the loader will fetch all blog posts on every build. The default is `false`. |
+| Property      | Description                                                                                                                                                                |
+|---------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `apiKey`      | The [webmentions.io](https://webmentions.io) API key for your account.                                                                                                     |
+| `domain`      | The domain of the site to fetch webmentions for (as configured in webmentions.io).                                                                                         |
+| `incremental` | If `true`, the loader will only fetch new/updated discussions since the last build. Otherwise the loader will fetch all blog posts on every build. The default is `false`. |
 
 
 ## Type Information
