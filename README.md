@@ -57,11 +57,11 @@ The `webmentionsLoader` function takes an options object with the following stru
 }
 ```
 
-| Property      | Description                                                                                                                                                                |
-|---------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `apiKey`      | The [webmentions.io](https://webmentions.io) API key for your account.                                                                                                     |
-| `domain`      | The domain of the site to fetch webmentions for (as configured in webmentions.io).                                                                                         |
-| `incremental` | If `true`, the loader will only fetch new/updated discussions since the last build. Otherwise the loader will fetch all blog posts on every build. The default is `false`. |
+| Property      | Description                                                                                                                                                         |
+|---------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `apiKey`      | The [webmentions.io](https://webmentions.io) API key for your account.                                                                                              |
+| `domain`      | The domain of the site to fetch webmentions for (as configured in webmentions.io).                                                                                  |
+| `incremental` | If `true`, the loader will only fetch new webmentions since the last build. Otherwise the loader will fetch all webmentions on every build. The default is `false`. |
 
 
 ## Type Information
