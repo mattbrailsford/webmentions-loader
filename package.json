@@ -1,0 +1,37 @@
+{
+  "name": "webmentions-loader",
+  "version": "0.0.1",
+  "description": "Webmentions.io Loader for Astro",
+  "author": "Matt Brailsford",
+  "type": "module",
+  "exports": {
+    ".": "./index.ts"
+  },
+  "files": [
+    "src",
+    "index.ts"
+  ],
+  "scripts": {
+    "prepack": "npx mkdirp ./artifacts",
+    "pack": "npm pack --pack-destination ./artifacts"
+  },
+  "devDependencies": {
+    "astro": "^5.0.0-beta.1",
+    "typescript": "^5.6.2",
+    "mkdirp": "^3.0.1"
+  },
+  "peerDependencies": {
+    "astro": "^5.0.0-beta.1"
+  },
+  "keywords": [
+    "astro-component",
+    "withastro",
+    "astro-loader"
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mattbrailsford/webmentions-loader.git"
+  },
+  "homepage": "https://github.com/mattbrailsford/webmentions-loader"
+}
