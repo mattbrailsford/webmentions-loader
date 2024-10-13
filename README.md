@@ -22,7 +22,7 @@ import { webmentionsLoader } from "webmentions-loader";
 
 const webmentions = defineCollection({
   loader: webmentionsLoader({
-      apiKey: WEBMENTIONSIO_API_KEY,
+      apiKey: WEBMENTIONS_IO_API_KEY,
       domain: WEBSITE_DOMAIN
   })
 });
