@@ -119,7 +119,7 @@ export enum WebmentionProperty {
 }
 ```
 
-TypeScript types are available for all of the above.
+TypeScript types for all of the above can be imported from the `webmentions-loader` package.
 
 ```typescript
 import type { Webmention, WebmentionAuthor, WebmentionContent, WebmentionProperty } from 'webmentions-loader'
