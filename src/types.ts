@@ -17,7 +17,7 @@ export type Webmention = {
     received: Date;
     source: string;
     target: string;
-    property: 'in-reply-to' | 'like-of' | 'repost-of' | 'bookmark-of' | 'mention-of' | 'rsvp';
+    property: WebmentionProperty;
     isPrivate: boolean;
 }
 
@@ -31,4 +31,13 @@ export type WebmentionAuthor = {
 export type WebmentionContent = {
     text: string;
     html: string;
+}
+
+export enum WebmentionProperty {
+    InReplyTo = 'in-reply-to',
+    LikeOf = 'like-of',
+    RepostOf = 'repost-of',
+    BookmarkOf = 'bookmark-of',
+    MentionOf = 'mention-of',
+    RSVP = 'rsvp'
 }

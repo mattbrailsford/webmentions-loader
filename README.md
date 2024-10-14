@@ -34,11 +34,11 @@ You can then use these like any other content collection in Astro:
 ```astro
 ---
 import { getCollection } from "astro:content";
-import type { Webmention } from "webmentions-loader";
+import type { Webmention, WebmentionProperty } from "webmentions-loader";
 
 const webmentions : Webmention[] = getCollection("webmentions").map(wm => wm.data);
 const pageWebmentions : Webmention[] = webmentions.filter(wm => wm.target == Astro.url.toString());
-const pageLikes : Webmention[] = pageWebmentions.filter(wm => wm.property == 'like-of');
+const pageLikes : Webmention[] = pageWebmentions.filter(wm => wm.property == WebmentionProperty.LikeOf);
 ---
 ...
 <div>{{ pageLikes.length }} Likes</div>
@@ -70,8 +70,8 @@ The loader will return an array of `Webmention` objects, each with the following
 
 ### `Webmention`
 
-```text
-{
+```typescript
+export type Webmention = {
     id: number;
     type: string;
     author: WebmentionAuthor;
@@ -81,15 +81,15 @@ The loader will return an array of `Webmention` objects, each with the following
     received: Date;
     source: string;
     target: string;
-    property: 'in-reply-to' | 'like-of' | 'repost-of' | 'bookmark-of' | 'mention-of' | 'rsvp';
+    property: WebmentionProperty;
     isPrivate: boolean;
 }
 ```
 
 ### `WebmentionAuthor`
 
-```text
-{
+```typescript
+export type WebmentionAuthor = {
     type: string;
     name: string;
     url: string;
@@ -99,15 +99,28 @@ The loader will return an array of `Webmention` objects, each with the following
 
 ### `WebmentionContent`
 
-```text
-{
+```typescript
+export type WebmentionContent = {
     text: string;
     html: string;
+}
+```
+
+### `WebmentionProperty`
+
+```typescript
+export enum WebmentionProperty {
+    InReplyTo = 'in-reply-to',
+    LikeOf = 'like-of',
+    RepostOf = 'repost-of',
+    BookmarkOf = 'bookmark-of',
+    MentionOf = 'mention-of',
+    RSVP = 'rsvp'
 }
 ```
 
 TypeScript types are available for all of the above.
 
 ```typescript
-import type { Webmention, WebmentionAuthor, WebmentionContent } from 'webmentions-loader'
+import type { Webmention, WebmentionAuthor, WebmentionContent, WebmentionProperty } from 'webmentions-loader'
 ```

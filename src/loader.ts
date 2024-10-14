@@ -69,7 +69,14 @@ export function webmentionsLoader({
             received: z.date(),
             source: z.string(),
             target: z.string(),
-            property: z.string(),
+            property: z.enum([
+                'in-reply-to',
+                'like-of',
+                'repost-of',
+                'bookmark-of',
+                'mention-of',
+                'rsvp'
+            ]),
             isPrivate: z.boolean()
         })
     }
